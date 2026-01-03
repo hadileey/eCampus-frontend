@@ -1,6 +1,31 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+import { BrowserRouter } from "react-router-dom";
 
 function Landing() {
+  const [activeSection, setActiveSection] = useState(null);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY === 0) {
+        setActiveSection(null); 
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+      setActiveSection(id);
+      setIsMobileMenuOpen(false);
+    }
+  };
+
   const faqData = [
     {
       question: "How do I access my enrolled courses?",
@@ -62,13 +87,21 @@ function Landing() {
       <nav className="fixed border-b border-gray-200 h-[10vh] md:h-[12vh] w-full py-2 bg-white z-20">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center h-16">
-            <a href="/">
+            <button
+              style={{ cursor: "pointer" }}
+              onClick={() =>
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+                })
+              }
+            >
               <img
                 src="https://i.ibb.co/bM5YrcT2/logored.png"
                 alt="dd"
                 className="w-28 md:w-35"
               />
-            </a>
+            </button>
 
             <div className="nav-items hidden md:block">
               <ul
@@ -76,34 +109,68 @@ function Landing() {
                 style={{ fontFamily: "DM Sans, sans-serif" }}
               >
                 <li>
-                  <a
-                    href=""
-                    className="font-semibold"
-                    style={{ color: "#E2343C" }}
+                  <button
+                    style={{ cursor: "pointer" }}
+                    onClick={() => scrollToSection("about")}
+                    className={`transition-colors ${
+                      activeSection === "about"
+                        ? "text-[#E2343C]"
+                        : "text-[#00000096]"
+                    }`}
                   >
                     About
-                  </a>
+                  </button>
                 </li>
+
                 <li>
-                  <a href="" className="" style={{ color: "#00000096" }}>
+                  <button
+                    style={{ cursor: "pointer" }}
+                    onClick={() => scrollToSection("features")}
+                    className={`transition-colors ${
+                      activeSection === "features"
+                        ? "text-[#E2343C]"
+                        : "text-[#00000096]"
+                    }`}
+                  >
                     Features
-                  </a>
+                  </button>
                 </li>
+
                 <li>
-                  <a href="" className="" style={{ color: "#00000096" }}>
+                  <button
+                    style={{ cursor: "pointer" }}
+                    onClick={() => scrollToSection("dep")}
+                    className={`transition-colors ${
+                      activeSection === "dep"
+                        ? "text-[#E2343C]"
+                        : "text-[#00000096]"
+                    }`}
+                  >
                     Departments
-                  </a>
+                  </button>
                 </li>
+
                 <li>
-                  <a href="" className="" style={{ color: "#00000096" }}>
+                  <button
+                    style={{ cursor: "pointer" }}
+                    onClick={() => scrollToSection("faq")}
+                    className={`transition-colors ${
+                      activeSection === "faq"
+                        ? "text-[#E2343C]"
+                        : "text-[#00000096]"
+                    }`}
+                  >
                     Help & FAQ
-                  </a>
+                  </button>
                 </li>
               </ul>
             </div>
 
             <div className="hidden md:flex space-x-6">
-              <button className="custom-button flex items-center gap-2">
+              <button
+                className="custom-button flex items-center gap-2"
+                onClick={() => window.open("/Dashboard", "_blank")}
+              >
                 Go to Dashboard{" "}
                 <img
                   src="https://i.ibb.co/jvt9xNnc/arrow.png"
@@ -114,11 +181,11 @@ function Landing() {
             </div>
 
             <div
-  className="md:hidden text-2xl text-gray-600 cursor-pointer"
-  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
->
-  {isMobileMenuOpen ? <>&#9932;</> : <>&#9776;</>}
-</div>
+              className="md:hidden text-2xl text-gray-600 cursor-pointer"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <>&#9932;</> : <>&#9776;</>}
+            </div>
           </div>
         </div>
 
@@ -129,31 +196,62 @@ function Landing() {
               style={{ fontFamily: "DM Sans, sans-serif" }}
             >
               <li>
-                <a
-                  href=""
-                  className="font-semibold block"
-                  style={{ color: "#E2343C" }}
-                >
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="" className="block" style={{ color: "#00000096" }}>
-                  Features
-                </a>
-              </li>
-              <li>
-                <a href="" className="block" style={{ color: "#00000096" }}>
-                  Departments
-                </a>
-              </li>
-              <li>
-                <a href="" className="block" style={{ color: "#00000096" }}>
-                  Help & FAQ
-                </a>
-              </li>
+                  <button
+                    style={{ cursor: "pointer" }}
+                    onClick={() => scrollToSection("about")}
+                    className={`transition-colors ${
+                      activeSection === "about"
+                        ? "text-[#E2343C]"
+                        : "text-[#00000096]"
+                    }`}
+                  >
+                    About
+                  </button>
+                </li>
+
+                <li>
+                  <button
+                    style={{ cursor: "pointer" }}
+                    onClick={() => scrollToSection("features")}
+                    className={`transition-colors ${
+                      activeSection === "features"
+                        ? "text-[#E2343C]"
+                        : "text-[#00000096]"
+                    }`}
+                  >
+                    Features
+                  </button>
+                </li>
+
+                <li>
+                  <button
+                    style={{ cursor: "pointer" }}
+                    onClick={() => scrollToSection("dep")}
+                    className={`transition-colors ${
+                      activeSection === "dep"
+                        ? "text-[#E2343C]"
+                        : "text-[#00000096]"
+                    }`}
+                  >
+                    Departments
+                  </button>
+                </li>
+
+                <li>
+                  <button
+                    style={{ cursor: "pointer" }}
+                    onClick={() => scrollToSection("faq")}
+                    className={`transition-colors ${
+                      activeSection === "faq"
+                        ? "text-[#E2343C]"
+                        : "text-[#00000096]"
+                    }`}
+                  >
+                    Help & FAQ
+                  </button>
+                </li>
               <li className="pt-2">
-                <button className="custom-button flex items-center gap-2">
+                <button className="custom-button flex items-center gap-2" onClick={() => window.open("/Dashboard", "_blank")}>
                   Go to Dashboard
                   <img
                     src="https://i.ibb.co/jvt9xNnc/arrow.png"
@@ -167,7 +265,10 @@ function Landing() {
         )}
       </nav>
 
-      <div style={{marginTop:"10vh"}} className="w-full relative bg-[#419CE1de] h-[90vh] mt-10vh flex flex-col justify-center">
+      <div
+        style={{ marginTop: "10vh" }}
+        className="w-full relative bg-[#419CE1de] h-[90vh] mt-10vh flex flex-col justify-center"
+      >
         <div className="absolute inset-0 w-full h-full">
           <img
             src="https://i.ibb.co/CpChHbQn/Gemini-Generated-Image-o7iwpeo7iwpeo7iw.png"
@@ -177,15 +278,15 @@ function Landing() {
         </div>
         <div className="linear absolute inset-0 bg-[#ffffff09] backdrop-blur-[2px] w-full h-full flex items-center z-10">
           <div className="w-full max-w-7xl mx-auto h-full flex flex-col md:flex-row items-center px-4 pt-10 md:pt-0">
-            <div className="w-full md:w-[60%] flex flex-col justify-center items-center md:pl-8 mb-8 md:mb-0">
+            <div className="w-full md:w-[60%] lg:w-[60%] flex flex-col justify-center items-center md:pl-8 mb-8 md:mb-0">
               <h2
-                className="text-4xl md:text-6xl font-bold text-gray-700 mb-2 md:mb-6"
+                className="text-4xl lg:text-6xl font-bold text-gray-700 mb-2 md:mb-6"
                 style={{ fontFamily: "DM Sans, sans-serif" }}
               >
                 Welcome to
               </h2>
               <div
-                className="font-bold text-white mb-4 md:mb-6 text-5xl md:text-8xl leading-tight"
+                className="font-bold text-white mb-4 md:mb-6 text-5xl lg:text-7xl xl:text-8xl leading-tight"
                 style={{ fontFamily: "DM Sans, sans-serif" }}
               >
                 KIT{" "}
@@ -194,7 +295,7 @@ function Landing() {
                 </span>
               </div>
               <p
-                className="text-sm text-center md:p-4 md:rounded-lg sm:text-base md:text-lg text-gray-900 md:text-black  mb-6 md:mb-12 max-w-xl md:max-w-2xl leading-relaxed"
+                className="text-sm text-center md:p-4 md:rounded-lg sm:text-base md:text-sm lg:text-lg text-gray-900 md:text-black  mb-6 md:mb-12 max-w-xl md:max-w-3xl lg:max-w-2xl leading-relaxed"
                 style={{ fontFamily: "DM Sans, sans-serif" }}
               >
                 Your gateway to seamless campus management, empowering students
@@ -202,7 +303,7 @@ function Landing() {
                 smart services for a more connected, efficient, and vibrant
                 campus experience.
               </p>
-              <button className="custom-button flex items-center gap-2">
+              <button className="custom-button flex items-center gap-2" onClick={() => window.open("/Dashboard", "_blank")}>
                 Get Started{" "}
                 <img
                   src="https://i.ibb.co/jvt9xNnc/arrow.png"
@@ -212,7 +313,7 @@ function Landing() {
               </button>
             </div>
 
-            <div className="w-full md:w-[50%] h-[50vh] md:h-full flex items-end justify-center md:justify-end overflow-hidden">
+            <div className="w-full md:w-[70%] lg:w-[50%] h-[50vh] md:h-full flex items-end justify-center md:justify-end overflow-hidden">
               <img
                 src="https://i.ibb.co/ccjHDKsM/c-HJpdm-F0-ZS9sci9pb-WFn-ZXMvd2-Vic2l0-ZS8y-MDI1-LTA2-L3-Jhd3-Bpe-GVsb2-Zma-WNl-N19wa-G90b19v-Zl95b3-Vu-Z19pb.png"
                 alt=""
@@ -514,7 +615,7 @@ function Landing() {
           </div>
         </div>
       </div>
-      <div className="py-12 md:py-24 bg-white" id="departments">
+      <div className="py-12 md:py-24 bg-white" id="dep">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-10 md:mb-16">
             <div className="flex items-center gap-2 mb-4 justify-center">
@@ -760,7 +861,7 @@ function Landing() {
                 Empowering students with world-class digital learning resources
                 and technical support for a seamless academic journey.
               </p>
-              <button className="custom-button">
+              <button className="custom-button" onClick={() => window.open("/Dashboard", "_blank")}>
                 Get started
                 <img
                   src="https://i.ibb.co/jvt9xNnc/arrow.png"
