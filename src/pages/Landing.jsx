@@ -169,7 +169,7 @@ function Landing() {
             <div className="hidden md:flex space-x-6">
               <button
                 className="custom-button flex items-center gap-2"
-                onClick={() => window.open("/Dashboard", "_blank")}
+                onClick={() => window.open("/dashboard", "_blank")}
               >
                 Go to Dashboard{" "}
                 <img
@@ -251,7 +251,7 @@ function Landing() {
                   </button>
                 </li>
               <li className="pt-2">
-                <button className="custom-button flex items-center gap-2" onClick={() => window.open("/Dashboard", "_blank")}>
+                <button className="custom-button flex items-center gap-2" onClick={() => window.open("/dashboard", "_blank")}>
                   Go to Dashboard
                   <img
                     src="https://i.ibb.co/jvt9xNnc/arrow.png"
@@ -303,7 +303,7 @@ function Landing() {
                 smart services for a more connected, efficient, and vibrant
                 campus experience.
               </p>
-              <button className="custom-button flex items-center gap-2" onClick={() => window.open("/Dashboard", "_blank")}>
+              <button className="custom-button flex items-center gap-2" onClick={() => window.open("/dashboard", "_blank")}>
                 Get Started{" "}
                 <img
                   src="https://i.ibb.co/jvt9xNnc/arrow.png"
@@ -861,7 +861,7 @@ function Landing() {
                 Empowering students with world-class digital learning resources
                 and technical support for a seamless academic journey.
               </p>
-              <button className="custom-button" onClick={() => window.open("/Dashboard", "_blank")}>
+              <button className="custom-button" onClick={() => window.open("/dashboard", "_blank")}>
                 Get started
                 <img
                   src="https://i.ibb.co/jvt9xNnc/arrow.png"
