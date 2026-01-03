@@ -302,7 +302,7 @@ function Login() {
             </button>
           </form>
 
-          <div className="mt-8 text-center">
+          <div className="mt-2 md:mt-8 text-center">
             <p className="text-gray-500 text-xs md:text-sm">
               Don't have an account?{" "}
               <Link
