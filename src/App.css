@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+.linear {
+background: linear-gradient(90deg, #419ce166 30%, #ffe357e1 100%);
+}
+
+@layer base {
+  .font-outline-2 {
+    -webkit-text-stroke: 0.1px rgb(255, 255, 255);
+  }
+  .font-outline-1 {
+    -webkit-text-stroke: 0.1px #E2343C;
+  }
+}
+
+.custom-button {
+  background: #E2343C;
+  border-radius: 0px;
+  font-family: "DM Sans", sans-serif;
+  color: #ffffff;
+  display: flex;
+    align-items: center;
+    border: none;
+    gap: 4px;
+    padding: 8px 16px;
+  outline: 1px solid #E2343C;
+    transition: all 0.3s ease;
+}
+
+.custom-button:hover {
+  cursor: pointer;
+    border: none;
+  outline: 1px solid #ffffff;
+}
+
+.custom-link {
+  color: #E2343C;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.custom-link:hover {
+  color: #E2343C;
+  text-decoration: underline;
+}
