@@ -148,7 +148,7 @@ function Login() {
             </p>
           </div>
 
-          <div className="flex bg-gray-100 p-1 rounded-xl mb-8 relative">
+          <div className="flex bg-gray-100 p-1 mx-2 md:mx-0 rounded-xl mb-8 relative">
             <div
               className={`absolute top-1 bottom-1 w-[calc(50%-4px)] bg-white rounded-lg border border-dashed border-gray-300 transition-all duration-300 ease-in-out transform ${
                 role === "faculty" ? "translate-x-full" : "translate-x-0"
