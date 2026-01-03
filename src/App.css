@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .linear {
-background: linear-gradient(90deg, #419ce166 30%, #ffe357e1 100%);
+background: linear-gradient(90deg, #ffe3573d 30%, #419ce166 100%);
 }
 
 @layer base {
