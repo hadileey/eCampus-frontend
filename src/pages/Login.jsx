@@ -139,7 +139,7 @@ function Login() {
             />
           </div>
 
-          <div className="text-center mb-8">
+          <div className="text-center mb-8 hidden md:block">
             <h2 className="text-3xl font-bold text-gray-900 mb-2">
               Hello <span className="text-[#E2343C]">Again!</span> 👋
             </h2>
