@@ -315,7 +315,7 @@ function Login() {
           </div>
         </div>
 
-        <p className="absolute bottom-10 lg:bottom-6 text-gray-400 text-xs text-center px-4">
+        <p className="hidden md:block absolute bottom-10 lg:bottom-6 text-gray-400 text-xs text-center px-4">
           © {new Date().getFullYear()} KIT eCampus Platform. Restricted Access.
         </p>
       </div>
