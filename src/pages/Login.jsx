@@ -21,7 +21,7 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen w-full flex font-['DM_Sans'] overflow-hidden">
+    <div className="min-h-[100vh] w-full flex font-['DM_Sans'] overflow-hidden">
       <div className="hidden lg:flex lg:w-1/2 relative items-start justify-center overflow-hidden">
         <div className="relative z-10 p-12 text-white max-w-xl">
           <div className="flex justify-start items-end gap-2">
