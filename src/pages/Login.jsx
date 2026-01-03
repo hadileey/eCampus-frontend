@@ -130,7 +130,7 @@ function Login() {
       </div>
 
       <div className="w-full lg:w-1/2 flex flex-col justify-center items-center p-6 relative">
-        <div className="w-full max-w-md p-8 md:p-10 rounded-3xl border border-dashed border-gray-300">
+        <div className="w-full max-w-md p-4 md:p-10 rounded-3xl border border-dashed border-gray-300">
           <div className="lg:hidden mb-8 text-center">
             <img
               src="https://i.ibb.co/bM5YrcT2/logored.png"
