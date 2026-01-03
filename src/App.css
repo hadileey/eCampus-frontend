@@ -25,6 +25,7 @@ background: linear-gradient(90deg, #ffe3573d 30%, #419ce166 100%);
     padding: 8px 16px;
   outline: 1px solid #E2343C;
     transition: all 0.3s ease;
+    justify-content: center;
 }
 
 .custom-button:hover {
