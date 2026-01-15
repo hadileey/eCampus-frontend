@@ -12,7 +12,6 @@ import {
   AlertCircle
 } from "lucide-react";
 
-// Dummy Subject Data for Student
 const STUDENT_SUBJECTS = [
   {
     id: "CS101",
