@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
@@ -9,15 +9,56 @@ function Login() {
     email: "",
     password: "",
   });
+  useEffect(() => {
+    localStorage.removeItem("sessionId");
+    localStorage.removeItem("role");
+    localStorage.removeItem("userId");
+  }, []);
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(`Logging in as ${role} with:`, formData);
-    navigate("/dashboard");
+
+    const payload =
+      role === "instructor"
+        ? {
+            email: formData.email.trim(), 
+            password: formData.password,
+            role: "instructor",
+          }
+        : {
+            regNo: formData.email.trim(),
+            password: formData.password,
+            role: "student",
+          };
+
+    try {
+      const res = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        alert(data.message || "Invalid credentials");
+        return;
+      }
+
+      localStorage.setItem("sessionId", data.sessionId);
+      localStorage.setItem("role", data.role);
+      localStorage.setItem("userId", data.userId);
+
+      navigate("/dashboard");
+    } catch (error) {
+      alert("Server error. Please try again.");
+    }
   };
 
   return (
@@ -151,7 +192,7 @@ function Login() {
           <div className="flex bg-gray-100 p-1 mx-4 md:mx-0 rounded-xl mb-8 relative">
             <div
               className={`absolute top-1 bottom-1 w-[calc(50%-4px)] bg-white rounded-lg border border-dashed border-gray-300 transition-all duration-300 ease-in-out transform ${
-                role === "faculty" ? "translate-x-full" : "translate-x-0"
+                role === "instructor" ? "translate-x-full" : "translate-x-0"
               }`}
             ></div>
             <button
@@ -163,9 +204,9 @@ function Login() {
               Student
             </button>
             <button
-              onClick={() => setRole("faculty")}
+              onClick={() => setRole("instructor")}
               className={`flex-1 relative z-10 py-2 text-sm font-bold text-center transition-colors ${
-                role === "faculty" ? "text-[#E2343C]" : "text-gray-500"
+                role === "instructor" ? "text-[#E2343C]" : "text-gray-500"
               }`}
             >
               Faculty

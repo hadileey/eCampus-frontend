@@ -171,7 +171,7 @@ function Landing() {
                 className="custom-button flex items-center gap-2"
                 onClick={() => window.open("/dashboard", "_blank")}
               >
-                Go to Dashboard{" "}
+                Open Classroom{" "}
                 <img
                   src="https://i.ibb.co/jvt9xNnc/arrow.png"
                   alt=""
