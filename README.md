@@ -1,4 +1,4 @@
-# 🎓 KIT eCampus – Frontend
+# 🎓 KIT eCampus – Frontend (⚠️ Development stage)
 
 A modern, responsive frontend for the **KIT eCampus Learning Management System**, built using **React + Vite** with a clean UI and role-based user experience.
 
